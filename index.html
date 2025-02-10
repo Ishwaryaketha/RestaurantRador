@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <header>
+        <h1>Restaurant Radar</h1>
+        <input type="text" id="searchBar" placeholder="Search for a restaurant..." oninput="filterRestaurants()">
+        <ul id="restaurantList" class="hide"></ul>
+    </header>
+    <!--filters-->
+    <div id="head">
+        <button id="filters">Filters</button>
+        <button id="rating">Rating</button>
+        <button id="serve_alcohol">Serves Alcohol</button>
+    </div>
+    <div id="filterpopup" class="hidden">
+        <h3>Choose Filter</h3>
+        <div class="options">
+            <input type="radio" id="sortByRating" name="options" value="rating">
+            <label for="sortByRating">Sort by Rating</label>
+        </div>
+        <div class="options">
+            <input type="radio" id="sortHighToLow" name="options" value="hightolow">
+            <label for="sortHighToLow">High To Low</label>
+        </div>
+        <div class="options">
+            <input type="radio" id="costoption" name="options" value="costLow">
+            <label for="costoption">Cost Low to High</label>
+        </div>
+        <div class="options">
+            <input type="radio" id="distanceoption" name="options" value="distance">
+            <label for="distanceoption">distance</label>
+        </div>
+        <button id="applyfilter">Apply</button>
+        <button id="closefilter">Close</button>
+    </div>
+    <script src="./index.js"></script>
+</body>
+</html>
