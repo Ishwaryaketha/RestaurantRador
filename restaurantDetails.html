@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurant Details</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: rgb(185, 239, 240);
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    #detailsContainer {
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      max-width: 90%;
+      width: 500px;
+    }
+
+    #restaurantImage {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin: 0 0 10px;
+      color: #444;
+    }
+
+    p {
+      margin: 10px 0;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    p strong {
+      font-weight: bold;
+      color: #555;
+    }
+
+    button {
+      padding: 12px 24px;
+      background: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 20px;
+      }
+
+      p {
+        font-size: 14px;
+      }
+
+      button {
+        font-size: 14px;
+        padding: 10px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #detailsContainer {
+        padding: 15px;
+      }
+
+      h1 {
+        font-size: 18px;
+      }
+
+      p {
+        font-size: 12px;
+      }
+
+      button {
+        font-size: 12px;
+        padding: 8px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="detailsContainer">
+    <h1 id="restaurantName"></h1>
+    <img id="restaurantImage" src="" alt="Restaurant Image">
+    <p id="restaurantDescription"></p>
+    <p><strong>Rating:</strong> <span id="restaurantRating"></span></p>
+    <p><strong>Price for Two:</strong> <span id="restaurantPrice"></span></p>
+    <p><strong>Food Type:</strong> <span id="restaurantFoodType"></span></p>
+    <p><strong>Distance:</strong> <span id="restaurantDistance"></span></p>
+    <p><strong>Location:</strong> <span id="restaurantLocation"></span></p>
+    <p><strong>Open Time:</strong> <span id="restaurantOpenTime"></span></p>
+    <p><strong>Close Time:</strong> <span id="restaurantCloseTime"></span></p>
+    <button onclick="goBack()">Go Back</button>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const restaurant = JSON.parse(localStorage.getItem("selectedRestaurant"));
+
+      if (restaurant) {
+        document.getElementById("restaurantName").textContent = restaurant.name;
+        document.getElementById("restaurantImage").src = `images/${restaurant.image}.jpg`;
+        document.getElementById("restaurantDescription").textContent = restaurant.description;
+        document.getElementById("restaurantRating").textContent = restaurant.rating;
+        document.getElementById("restaurantPrice").textContent = "$" + restaurant.price_for_two;
+        document.getElementById("restaurantFoodType").textContent = restaurant.foodtype;
+        document.getElementById("restaurantDistance").textContent = restaurant.distance + "km";
+        document.getElementById("restaurantLocation").textContent = restaurant.location;
+        document.getElementById("restaurantOpenTime").textContent = restaurant.open_time;
+        document.getElementById("restaurantCloseTime").textContent = restaurant.close_time;
+      }
+    });
+
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</body>
+</html>
